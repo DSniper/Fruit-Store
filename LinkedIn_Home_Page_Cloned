@@ -1,0 +1,1178 @@
+/*  code written is in SAIL  */
+
+a!localVariables(
+  local!profiledetails: {
+    name: "Appian Developers",
+    intro: "In Journey from Shunya to Shikhar",
+    profileviews: 500,
+    viewsofyourpost: 350
+  },
+  a!headerContentLayout(
+    header: a!cardLayout(
+      contents: {
+        a!columnsLayout(
+          columns: {
+            a!columnLayout(width: "EXTRA_NARROW"),
+            a!columnLayout(width: "EXTRA_NARROW"),
+            a!columnLayout(
+              contents: {
+                a!sideBySideLayout(
+                  items: {
+                    a!sideBySideItem(
+                      item: a!imageField(
+                        images: a!webImage(
+                          source: "https://image.flaticon.com/icons/png/512/174/174857.png"
+                        ),
+                        size: "ICON"
+                      ),
+                      width: "MINIMIZE"
+                    ),
+                    a!sideBySideItem(
+                      item: a!textField(
+                        labelPosition: "COLLAPSED",
+                        placeholder: "SEARCH"
+                      )
+                    )
+                  }
+                )
+              },
+              width: "NARROW"
+            ),
+            a!columnLayout(width: "EXTRA_NARROW"),
+            a!forEach(
+              items: {
+                { icon: "home", label: "Home" },
+                { icon: "users", label: "My Network" },
+                { icon: "briefcase", label: "Jobs" },
+                { icon: "commenting", label: "messaging" },
+                { icon: "bell", label: "notifaction" }
+              },
+              expression: a!columnLayout(
+                contents: {
+                  a!sideBySideLayout(
+                    items: {
+                      a!sideBySideItem(
+                        item: a!richTextDisplayField(
+                          labelPosition: "COLLAPSED",
+                          value: {
+                            a!richTextIcon(
+                              icon: fv!item.icon,
+                              color: "#0e76a8",
+                              size: "MEDIUM_PLUS"
+                            )
+                          },
+                          align: "CENTER"
+                        )
+                      )
+                    }
+                  ),
+                  a!sideBySideLayout(
+                    items: {
+                      a!sideBySideItem(
+                        item: a!richTextDisplayField(
+                          labelPosition: "COLLAPSED",
+                          value: {
+                            a!richTextItem(
+                              text: fv!item.label,
+                              color: "#0e76a8",
+                              size: "SMALL"
+                            )
+                          },
+                          preventWrapping: true(),
+                          align: "CENTER"
+                        )
+                      )
+                    }
+                  )
+                },
+                width: "EXTRA_NARROW"
+              )
+            )
+          }
+        )
+      },
+      showBorder: true()
+    ),
+    contents: {
+      a!columnsLayout(
+        columns: {
+          a!columnLayout(
+            contents: {
+              a!columnsLayout(
+                columns: {
+                  a!columnLayout(
+                    contents: {
+                      a!cardLayout(
+                        contents: {
+                          a!billboardLayout(
+                            backgroundMedia: a!webImage(
+                              source: "https://i2.wp.com/codyskill.com/wp-content/uploads/2021/07/email-newsletter-marketing-3249062.png?w=1280&ssl=1"
+                            ),
+                            height: "AUTO",
+                            marginBelow: "NONE",
+                            overlay: a!fullOverlay(
+                              alignVertical: "MIDDLE",
+                              contents: a!imageField(
+                                images: a!webImage(
+                                  source: "https://media-exp1.licdn.com/dms/image/C5603AQF75gnmaDuxqg/profile-displayphoto-shrink_800_800/0/1619641146976?e=1646265600&v=beta&t=Q5zLaCoip44xC3n3K1jusX_0Vvl0yNd_nyEwpg6gcx8"
+                                ),
+                                size: "SMALL",
+                                style: "AVATAR",
+                                align: "CENTER"
+                              ),
+                              style: "NONE"
+                            )
+                          ),
+                          a!richTextDisplayField(
+                            labelPosition: "COLLAPSED",
+                            value: {
+                              a!richTextItem(
+                                text: local!profiledetails.name,
+                                size: "MEDIUM",
+                                style: "STRONG"
+                              )
+                            },
+                            align: "CENTER"
+                          ),
+                          a!richTextDisplayField(
+                            labelPosition: "COLLAPSED",
+                            value: {
+                              a!richTextItem(
+                                text: local!profiledetails.intro,
+                                color: "SECONDARY",
+                                size: "STANDARD",
+                                style: "STRONG"
+                              )
+                            },
+                            align: "CENTER"
+                          ),
+                          a!sectionLayout(
+                            contents: {
+                              a!sideBySideLayout(
+                                items: {
+                                  a!sideBySideItem(
+                                    item: a!richTextDisplayField(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        repeat(3, char(32)),
+                                        a!richTextItem(
+                                          text: "Who viewed your profile",
+                                          color: "SECONDARY",
+                                          size: "STANDARD"
+                                        )
+                                      }
+                                    )
+                                  ),
+                                  a!sideBySideItem(
+                                    item: a!richTextDisplayField(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        a!richTextItem(
+                                          text: local!profiledetails.profileviews,
+                                          color: "ACCENT",
+                                          size: "STANDARD",
+                                          style: "STRONG"
+                                        ),
+                                        repeat(3, char(32))
+                                      }
+                                    ),
+                                    width: "MINIMIZE"
+                                  )
+                                }
+                              ),
+                              a!sideBySideLayout(
+                                items: {
+                                  a!sideBySideItem(
+                                    item: a!richTextDisplayField(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        repeat(3, char(32)),
+                                        a!richTextItem(
+                                          text: "Views of your post",
+                                          color: "SECONDARY",
+                                          size: "STANDARD"
+                                        )
+                                      }
+                                    )
+                                  ),
+                                  a!sideBySideItem(
+                                    item: a!richTextDisplayField(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        a!richTextItem(
+                                          text: local!profiledetails.viewsofyourpost,
+                                          color: "ACCENT",
+                                          size: "STANDARD",
+                                          style: "STRONG"
+                                        ),
+                                        repeat(3, char(32))
+                                      }
+                                    ),
+                                    width: "MINIMIZE"
+                                  )
+                                }
+                              )
+                            },
+                            divider: "ABOVE"
+                          ),
+                          a!sectionLayout(
+                            contents: {
+                              a!richTextDisplayField(
+                                labelPosition: "COLLAPSED",
+                                value: {
+                                  repeat(3, char(32)),
+                                  a!richTextItem(
+                                    text: "Access exclusive tools & insights",
+                                    color: "SECONDARY",
+                                    size: "STANDARD"
+                                  ),
+                                  char(10),
+                                  repeat(3, char(32)),
+                                  a!richTextItem(
+                                    text: "Re-activate Premium",
+                                    style: "STRONG"
+                                  )
+                                }
+                              )
+                            },
+                            divider: "ABOVE"
+                          ),
+                          a!sectionLayout(
+                            contents: {
+                              a!richTextDisplayField(
+                                labelPosition: "COLLAPSED",
+                                value: {
+                                  repeat(3, char(32)),
+                                  a!richTextIcon(icon: "bookmark", color: "#666460"),
+                                  char(32),
+                                  a!richTextItem(
+                                    text: "My Items",
+                                    color: "SECONDARY",
+                                    size: "STANDARD"
+                                  )
+                                }
+                              )
+                            },
+                            divider: "ABOVE"
+                          )
+                        },
+                        shape: "ROUNDED",
+                        padding: "NONE"
+                      )
+                    }
+                  )
+                }
+              ),
+              a!columnsLayout(
+                columns: {
+                  a!columnLayout(
+                    contents: {
+                      a!cardLayout(
+                        contents: {
+                          /*  for recent           */
+                          a!sectionLayout(
+                            contents: {
+                              a!richTextDisplayField(
+                                labelPosition: "COLLAPSED",
+                                value: {
+                                  char(10),
+                                  repeat(3, char(32)),
+                                  a!richTextItem(
+                                    text: "Recent",
+                                    color: "#000000",
+                                    style: "STRONG"
+                                  )
+                                }
+                              ),
+                              a!sectionLayout(
+                                contents: {
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "calendar-o", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Recent[1],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "calendar-o", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Recent[2],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "calendar-o", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Recent[3],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "calendar-o", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Recent[4],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  )
+                                }
+                              )
+                            }
+                          ),
+                          a!sectionLayout(
+                            contents: {
+                              a!richTextDisplayField(
+                                labelPosition: "COLLAPSED",
+                                value: {
+                                  char(10),
+                                  repeat(3, char(32)),
+                                  a!richTextItem(
+                                    text: "Groups",
+                                    color: "#4863A0",
+                                    size: "STANDARD"
+                                  )
+                                }
+                              ),
+                              a!sectionLayout(
+                                contents: {
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "calendar-o", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Groups[1],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "calendar-o", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Groups[2],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "calendar-o", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Groups[3],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "calendar-o", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Groups[4],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  )
+                                }
+                              )
+                            }
+                          ),
+                          /*  for events          */
+                          a!sectionLayout(
+                            contents: {
+                              a!richTextDisplayField(
+                                labelPosition: "COLLAPSED",
+                                value: {
+                                  char(10),
+                                  repeat(3, char(32)),
+                                  a!richTextItem(
+                                    text: "Events",
+                                    color: "#4863A0",
+                                    size: "STANDARD"
+                                  )
+                                }
+                              ),
+                              a!sectionLayout(
+                                contents: {
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "handshake-o", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Events[1],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "users", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Events[2],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "keyboard-o", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Events[3],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "handshake-o", color: "#0000FF"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Events[4],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  )
+                                },
+                                isCollapsible: true()
+                              )
+                            }
+                          ),
+                          /*  followed hash tags          */
+                          a!sectionLayout(
+                            contents: {
+                              a!richTextDisplayField(
+                                labelPosition: "COLLAPSED",
+                                value: {
+                                  char(10),
+                                  repeat(3, char(32)),
+                                  a!richTextItem(
+                                    text: "Followed HashTags",
+                                    color: "#4863A0",
+                                    size: "STANDARD"
+                                  )
+                                }
+                              ),
+                              a!sectionLayout(
+                                contents: {
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "hashtag", color: "#000000"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Followed_Hashtags[1],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "hashtag", color: "#000000"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Followed_Hashtags[2],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "hashtag", color: "#000000"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Followed_Hashtags[3],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  ),
+                                  a!richTextDisplayField(
+                                    labelPosition: "COLLAPSED",
+                                    value: {
+                                      repeat(3, char(32)),
+                                      a!richTextIcon(icon: "hashtag", color: "#000000"),
+                                      char(32),
+                                      a!richTextItem(
+                                        text: cons!DLink_Followed_Hashtags[4],
+                                        color: "SECONDARY",
+                                        size: "STANDARD"
+                                      )
+                                    }
+                                  )
+                                }
+                              )
+                            }
+                          ),
+                          /*  discover more layout           */
+                          a!sectionLayout(
+                            contents: {
+                              a!richTextDisplayField(
+                                value: {
+                                  repeat(3, char(32)),
+                                  char(32),
+                                  a!richTextItem(
+                                    text: "DISCOVER MORE",
+                                    color: "SECONDARY",
+                                    size: "STANDARD"
+                                  )
+                                },
+                                align: "CENTER"
+                              )
+                            },
+                            divider: "ABOVE"
+                          )
+                        },
+                        shape: "ROUNDED",
+                        padding: "NONE"
+                      )
+                    }
+                  )
+                }
+              )
+            },
+            width: "NARROW_PLUS"
+          ),
+          /* start a post started         */
+          a!columnLayout(
+            contents: {
+              a!cardLayout(
+                contents: {
+                  a!sideBySideLayout(
+                    items: {
+                      a!sideBySideItem(
+                        item: a!imageField(
+                          images: a!webImage(
+                            source: "https://media-exp1.licdn.com/dms/image/C5603AQF75gnmaDuxqg/profile-displayphoto-shrink_800_800/0/1619641146976?e=1646265600&v=beta&t=Q5zLaCoip44xC3n3K1jusX_0Vvl0yNd_nyEwpg6gcx8"
+                          ),
+                          size: "SMALL",
+                          style: "AVATAR"
+                        ),
+                        width: "MINIMIZE"
+                      ),
+                      a!sideBySideItem(
+                        item: a!textField(
+                          labelPosition: "COLLAPSED",
+                          placeholder: "Start a post"
+                        )
+                      )
+                    },
+                    alignVertical: "MIDDLE"
+                  ),
+                  a!sideBySideLayout(
+                    items: a!forEach(
+                      items: {
+                        { image: cons!D2D_LINKEDIN, label: "Photo" },
+                        { image: cons!D2D_LINKEDIN, label: "Video" },
+                        { image: cons!D2D_LINKEDIN, label: "Event" },
+                        {
+                          image: cons!D2D_LINKEDIN,
+                          label: "Write Article"
+                        }
+                      },
+                      expression: {
+                        a!sideBySideItem(
+                          item: a!imageField(
+                            images: a!documentImage(document: fv!item.image),
+                            size: "ICON"
+                          ),
+                          width: "MINIMIZE"
+                        ),
+                        a!sideBySideItem(
+                          item: a!richTextDisplayField(
+                            labelPosition: "COLLAPSED",
+                            value: a!richTextItem(text: fv!item.label)
+                          )
+                        )
+                      }
+                    ),
+                    alignVertical: "MIDDLE"
+                  )
+                },
+                shape: "ROUNDED"
+              ),
+              a!columnsLayout(
+                columns: {
+                  a!columnLayout(
+                    contents: a!sectionLayout(divider: "BELOW")
+                  ),
+                  a!columnLayout(
+                    contents: {
+                      a!richTextDisplayField(
+                        labelPosition: "COLLAPSED",
+                        value: {
+                          a!richTextItem(text: "Sort by: "),
+                          a!richTextItem(text: "Top", style: "STRONG"),
+                          a!richTextIcon(icon: "caret-down")
+                        }
+                      )
+                    },
+                    width: "NARROW"
+                  )
+                }
+              ),
+              a!cardLayout(
+                contents: {
+                  a!sideBySideLayout(
+                    items: {
+                      a!sideBySideItem(
+                        item: a!imageField(
+                          images: a!webImage(source: cons!DLink_imagepath),
+                          size: "SMALL",
+                          style: "AVATAR"
+                        ),
+                        width: "MINIMIZE"
+                      ),
+                      a!sideBySideItem(
+                        item: a!richTextDisplayField(
+                          labelPosition: "COLLAPSED",
+                          value: {
+                            repeat(6, char(32)),
+                            a!richTextItem(
+                              text: "Daisy Manmohan Singh",
+                              style: "STRONG"
+                            ),
+                            char(10),
+                            repeat(6, char(32)),
+                            a!richTextItem(
+                              text: "50+ subs on YT | Ex-Wiproite | Sail Expert | Shopify Developer | Wordpress Developer | Metaverse Architect | Bounty NFT's Hunter"
+                            ),
+                            char(10),
+                            repeat(6, char(32)),
+                            a!richTextItem(text: "51 m . 🌎")
+                          }
+                        )
+                      )
+                    },
+                    spacing: "NONE"
+                  ),
+                  a!sectionLayout(
+                    contents: {
+                      a!richTextDisplayField(
+                        labelPosition: "COLLAPSED",
+                        value: {
+                          repeat(23, char(32)),
+                          a!richTextItem(
+                            text: "You can copy the content, but not the creativity. 🙂",
+                            size: "MEDIUM"
+                          ),
+                          char(10),
+                          repeat(23, char(32)),
+                          a!richTextItem(text: "👍❤️ 2,769", size: "MEDIUM")
+                        }
+                      )
+                    }
+                  ),
+                  a!sideBySideLayout(
+                    items: {
+                      a!sideBySideItem(
+                        item: a!imageField(
+                          images: a!webImage(
+                            source: "https://media-exp1.licdn.com/dms/image/C5603AQF75gnmaDuxqg/profile-displayphoto-shrink_800_800/0/1619641146976?e=1646265600&v=beta&t=Q5zLaCoip44xC3n3K1jusX_0Vvl0yNd_nyEwpg6gcx8"
+                          ),
+                          size: "SMALL",
+                          style: "AVATAR"
+                        ),
+                        width: "MINIMIZE"
+                      ),
+                      a!sideBySideItem(
+                        item: a!textField(
+                          labelPosition: "COLLAPSED",
+                          placeholder: "Add a Comment"
+                        )
+                      )
+                    },
+                    alignVertical: "MIDDLE"
+                  )
+                },
+                shape: "ROUNDED"
+              ),
+              a!sectionLayout(),
+              a!cardLayout(
+                contents: {
+                  a!sideBySideLayout(
+                    items: {
+                      a!sideBySideItem(
+                        item: a!imageField(
+                          images: a!webImage(source: cons!DLink_imagepath),
+                          size: "SMALL",
+                          style: "AVATAR"
+                        ),
+                        width: "MINIMIZE"
+                      ),
+                      a!sideBySideItem(
+                        item: a!richTextDisplayField(
+                          labelPosition: "COLLAPSED",
+                          value: {
+                            repeat(6, char(32)),
+                            a!richTextItem(
+                              text: "Daisy Manmohan Singh",
+                              style: "STRONG"
+                            ),
+                            char(10),
+                            repeat(6, char(32)),
+                            a!richTextItem(
+                              text: "50+ subs on YT | Ex-Wiproite | Sail Expert | Shopify Developer | Wordpress Developer | Metaverse Architect | Bounty NFT's Hunter"
+                            ),
+                            char(10),
+                            repeat(6, char(32)),
+                            a!richTextItem(text: "51 m . 🌎")
+                          }
+                        )
+                      )
+                    },
+                    spacing: "NONE"
+                  ),
+                  a!sectionLayout(
+                    contents: {
+                      a!richTextDisplayField(
+                        labelPosition: "COLLAPSED",
+                        value: {
+                          repeat(23, char(32)),
+                          a!richTextItem(
+                            text: "Spend Some time Not Everything is on Internet",
+                            size: "MEDIUM"
+                          ),
+                          char(10),
+                          repeat(23, char(32)),
+                          a!richTextItem(text: "👍❤️ 2,769", size: "MEDIUM")
+                        }
+                      )
+                    }
+                  ),
+                  a!imageField(
+                    labelPosition: "ABOVE",
+                    images: {
+                      a!documentImage(document: cons!DLink_KASHI_2)
+                    },
+                    size: "FIT",
+                    isThumbnail: false,
+                    style: "STANDARD",
+                    align: "CENTER"
+                  ),
+                  a!sideBySideLayout(
+                    items: {
+                      a!sideBySideItem(
+                        item: a!imageField(
+                          images: a!webImage(
+                            source: "https://media-exp1.licdn.com/dms/image/C5603AQF75gnmaDuxqg/profile-displayphoto-shrink_800_800/0/1619641146976?e=1646265600&v=beta&t=Q5zLaCoip44xC3n3K1jusX_0Vvl0yNd_nyEwpg6gcx8"
+                          ),
+                          size: "SMALL",
+                          style: "AVATAR"
+                        ),
+                        width: "MINIMIZE"
+                      ),
+                      a!sideBySideItem(
+                        item: a!textField(
+                          labelPosition: "COLLAPSED",
+                          placeholder: "Add a Comment"
+                        )
+                      )
+                    },
+                    alignVertical: "MIDDLE"
+                  )
+                },
+                shape: "ROUNDED"
+              ),
+              a!sectionLayout(),
+              a!cardLayout(
+                contents: {
+                  a!sideBySideLayout(
+                    items: {
+                      a!sideBySideItem(
+                        item: a!imageField(
+                          images: a!webImage(source: cons!DLink_imagepath),
+                          size: "SMALL",
+                          style: "AVATAR"
+                        ),
+                        width: "MINIMIZE"
+                      ),
+                      a!sideBySideItem(
+                        item: a!richTextDisplayField(
+                          labelPosition: "COLLAPSED",
+                          value: {
+                            repeat(6, char(32)),
+                            a!richTextItem(
+                              text: "Daisy Manmohan Singh",
+                              style: "STRONG"
+                            ),
+                            char(10),
+                            repeat(6, char(32)),
+                            a!richTextItem(
+                              text: "50+ subs on YT | Ex-Wiproite | Sail Expert | Shopify Developer | Wordpress Developer | Metaverse Architect | Bounty NFT's Hunter"
+                            ),
+                            char(10),
+                            repeat(6, char(32)),
+                            a!richTextItem(text: "51 m . 🌎")
+                          }
+                        )
+                      )
+                    },
+                    spacing: "NONE"
+                  ),
+                  a!sectionLayout(
+                    contents: {
+                      a!richTextDisplayField(
+                        labelPosition: "COLLAPSED",
+                        value: {
+                          repeat(23, char(32)),
+                          a!richTextItem(
+                            text: "Some Live to Die Greateful are those who Die to Live",
+                            size: "MEDIUM"
+                          ),
+                          char(10),
+                          repeat(23, char(32)),
+                          a!richTextItem(
+                            text: "Welcome to City Older than History - Kashi",
+                            size: "MEDIUM"
+                          ),
+                          char(10),
+                          repeat(23, char(32)),
+                          a!richTextItem(text: "👍❤️ 200,769", size: "MEDIUM")
+                        }
+                      )
+                    }
+                  ),
+                  a!imageField(
+                    labelPosition: "ABOVE",
+                    images: {
+                      a!documentImage(document: cons!DLink_KASHI_5)
+                    },
+                    size: "FIT",
+                    isThumbnail: false,
+                    style: "STANDARD",
+                    align: "CENTER"
+                  ),
+                  a!sideBySideLayout(
+                    items: {
+                      a!sideBySideItem(
+                        item: a!imageField(
+                          images: a!webImage(
+                            source: "https://media-exp1.licdn.com/dms/image/C5603AQF75gnmaDuxqg/profile-displayphoto-shrink_800_800/0/1619641146976?e=1646265600&v=beta&t=Q5zLaCoip44xC3n3K1jusX_0Vvl0yNd_nyEwpg6gcx8"
+                          ),
+                          size: "SMALL",
+                          style: "AVATAR"
+                        ),
+                        width: "MINIMIZE"
+                      ),
+                      a!sideBySideItem(
+                        item: a!textField(
+                          labelPosition: "COLLAPSED",
+                          placeholder: "Add a Comment"
+                        )
+                      )
+                    },
+                    alignVertical: "MIDDLE"
+                  )
+                },
+                shape: "ROUNDED"
+              ),
+              a!sectionLayout(),
+              a!cardLayout(
+                contents: {
+                  a!sideBySideLayout(
+                    items: {
+                      a!sideBySideItem(
+                        item: a!imageField(
+                          images: a!webImage(source: cons!DLink_imagepath),
+                          size: "SMALL",
+                          style: "AVATAR"
+                        ),
+                        width: "MINIMIZE"
+                      ),
+                      a!sideBySideItem(
+                        item: a!richTextDisplayField(
+                          labelPosition: "COLLAPSED",
+                          value: {
+                            repeat(6, char(32)),
+                            a!richTextItem(
+                              text: "Daisy Manmohan Singh",
+                              style: "STRONG"
+                            ),
+                            char(10),
+                            repeat(6, char(32)),
+                            a!richTextItem(
+                              text: "50+ subs on YT | Ex-Wiproite | Sail Expert | Shopify Developer | Wordpress Developer | Metaverse Architect | Bounty NFT's Hunter"
+                            ),
+                            char(10),
+                            repeat(6, char(32)),
+                            a!richTextItem(text: "51 m . 🌎")
+                          }
+                        )
+                      )
+                    },
+                    spacing: "NONE"
+                  ),
+                  a!sectionLayout(
+                    contents: {
+                      a!richTextDisplayField(
+                        labelPosition: "COLLAPSED",
+                        value: {
+                          repeat(23, char(32)),
+                          a!richTextItem(
+                            text: "Live the way you dance",
+                            size: "MEDIUM"
+                          ),
+                          char(10),
+                          repeat(23, char(32)),
+                          a!richTextItem(
+                            text: "Work the way you Live",
+                            size: "MEDIUM"
+                          ),
+                          char(10),
+                          repeat(23, char(32)),
+                          a!richTextItem(text: "👍❤️ 200,769", size: "MEDIUM")
+                        }
+                      )
+                    }
+                  ),
+                  a!imageField(
+                    labelPosition: "ABOVE",
+                    images: {
+                      a!documentImage(document: cons!DLink_KASHI_4)
+                    },
+                    size: "FIT",
+                    isThumbnail: false,
+                    style: "STANDARD",
+                    align: "CENTER"
+                  ),
+                  a!sideBySideLayout(
+                    items: {
+                      a!sideBySideItem(
+                        item: a!imageField(
+                          images: a!webImage(
+                            source: "https://media-exp1.licdn.com/dms/image/C5603AQF75gnmaDuxqg/profile-displayphoto-shrink_800_800/0/1619641146976?e=1646265600&v=beta&t=Q5zLaCoip44xC3n3K1jusX_0Vvl0yNd_nyEwpg6gcx8"
+                          ),
+                          size: "SMALL",
+                          style: "AVATAR"
+                        ),
+                        width: "MINIMIZE"
+                      ),
+                      a!sideBySideItem(
+                        item: a!textField(
+                          labelPosition: "COLLAPSED",
+                          placeholder: "Add a Comment"
+                        )
+                      )
+                    },
+                    alignVertical: "MIDDLE"
+                  )
+                },
+                shape: "ROUNDED"
+              )
+            }
+          ),
+          /* end sart a post started         */
+          a!columnLayout(
+            contents: {
+              a!cardLayout(
+                contents: {
+                  a!sectionLayout(
+                    contents: {
+                      a!sideBySideLayout(
+                        items: {
+                          a!sideBySideItem(
+                            item: a!richTextDisplayField(
+                              labelPosition: "COLLAPSED",
+                              value: {
+                                char(10),
+                                repeat(3, char(32)),
+                                a!richTextItem(text: "LinkedIn News", style: "STRONG")
+                              },
+                              preventWrapping: false,
+                              align: "LEFT"
+                            )
+                          ),
+                          a!sideBySideItem(
+                            item: a!richTextDisplayField(
+                              labelPosition: "COLLAPSED",
+                              value: {
+                                char(10),
+                                a!richTextIcon(
+                                  icon: "info-circle",
+                                  color: "STANDARD",
+                                  size: "STANDARD"
+                                ),
+                                repeat(3, char(32))
+                              },
+                              align: "CENTER"
+                            ),
+                            width: "MINIMIZE"
+                          )
+                        }
+                      )
+                    }
+                  ),
+                  a!sectionLayout(
+                    contents: {
+                      a!forEach(
+                        items: enumerate(count(cons!DLink_Linkined_News)) + 1,
+                        expression: {
+                          a!richTextDisplayField(
+                            labelPosition: "COLLAPSED",
+                            value: {
+                              repeat(3, char(32)),
+                              a!richTextIcon(icon: "circle", color: "#666460"),
+                              repeat(3, char(32)),
+                              a!richTextItem(
+                                text: padright(cons!DLink_Linkined_News[fv!item], 50),
+                                style: "STRONG"
+                              ),
+                              char(10),
+                              repeat(12, char(32)),
+                              a!richTextItem(
+                                text: cons!DLink_Linkined_News_time[fv!item],
+                                color: "SECONDARY",
+                                size: "STANDARD"
+                              )
+                            }
+                          )
+                        }
+                      )
+                    }
+                  )
+                },
+                shape: "ROUNDED",
+                padding: "NONE"
+              ),
+              a!sectionLayout(),
+              a!cardLayout(
+                contents: {
+                  a!sectionLayout(
+                    contents: {
+                      a!sideBySideLayout(
+                        items: {
+                          a!sideBySideItem(
+                            item: a!richTextDisplayField(
+                              labelPosition: "COLLAPSED",
+                              value: {
+                                char(10),
+                                repeat(3, char(32)),
+                                a!richTextItem(text: "LinkedIn News", style: "STRONG")
+                              },
+                              preventWrapping: false,
+                              align: "LEFT"
+                            )
+                          ),
+                          a!sideBySideItem(
+                            item: a!richTextDisplayField(
+                              labelPosition: "COLLAPSED",
+                              value: {
+                                char(10),
+                                a!richTextIcon(
+                                  icon: "info-circle",
+                                  color: "STANDARD",
+                                  size: "STANDARD"
+                                ),
+                                repeat(3, char(32))
+                              },
+                              align: "CENTER"
+                            ),
+                            width: "MINIMIZE"
+                          )
+                        }
+                      )
+                    }
+                  ),
+                  a!sectionLayout(
+                    contents: {
+                      a!forEach(
+                        items: enumerate(count(cons!DLink_Linkined_News)) + 1,
+                        expression: {
+                          a!richTextDisplayField(
+                            labelPosition: "COLLAPSED",
+                            value: {
+                              repeat(3, char(32)),
+                              a!richTextItem(
+                                text: fv!index,
+                                color: "#666460",
+                                style: "STRONG"
+                              ),
+                              repeat(3, char(32)),
+                              a!richTextItem(
+                                text: padright(cons!DLink_Linkined_News[fv!item], 50),
+                                style: "STRONG"
+                              ),
+                              char(10),
+                              repeat(12, char(32)),
+                              a!richTextItem(
+                                text: cons!DLink_Linkined_News_time[fv!item],
+                                color: "SECONDARY",
+                                size: "STANDARD"
+                              )
+                            }
+                          )
+                        }
+                      )
+                    }
+                  )
+                },
+                shape: "ROUNDED",
+                padding: "NONE"
+              )
+            },
+            width: "NARROW_PLUS"
+          )
+        }
+      )
+    },
+    backgroundColor: "#F4F2ED"
+  )
+)
